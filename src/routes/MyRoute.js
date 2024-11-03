@@ -2,7 +2,8 @@ import React from "react";
 import { Route, Redirect } from "react-router-dom";
 import PropTypes from "prop-types";
 
-export default function MyRoutes({ component: Component, isClosed, ...rest }) {
+// Definindo as propriedades padrão por isso isClosed não é obrigatorio.
+export default function MyRoutes({ component: Component, isClosed = false, ...rest }) {
   const isLoggedId = true;
 
 /*
@@ -20,10 +21,7 @@ e depois ele retorna o usuario para a rota que ele estava antes de ser redirecio
   return <Route {...rest} component={Component} />;
 }
 
-// Definindo as propriedades padrão por isso isClosed não é obrigatorio.
-MyRoutes.defaultProps = {
-  isClosed: false,
-};
+
 
 MyRoutes.propTypes = {
   component: PropTypes.oneOfType([PropTypes.element, PropTypes.func])//ele pode ser um elemento ou uma função
